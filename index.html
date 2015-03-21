@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+	<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+	<link rel="stylesheet" href="css/custom.css"> 
+</head>
+<body class="body--home">
+<div class="site-wrapper site-wrapper--home">
+		<div class="header-wrap--home  js-header-wrap">
+		</div>
+		<div class="content-wrap--home">
+			<div id="content_homepage" class="content--home">
+				<div class="cw--c">
+					<div class="logo-wrap--home">
+						<a id="logo_homepage_link" class="logo_homepage"
+							title="About DuckDuckGo" href="/about">About DuckDuckGo</a>
+					</div>
+					<div class="search-wrap--home">
+						<form class="search--home  js-search-form search--adv search--focus">
+							<input id="search_form_input_homepage" class="js-search-input search__input--adv" type="text" autocomplete="off" name="q" tabindex="1" value="" autocapitalize="off" autocorrect="off">
+							<input id="search_button_homepage" class="search__button  js-search-button" type="submit" tabindex="2" value="S">
+						</form>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script>
+	$(document).ready(function(){
+		$.ajax({
+		      type: 'GET',
+		      url: 'https://api.duckduckgo.com/',
+		      data: { q: "duckduckgo", format: 'json', pretty: 1 },
+		      jsonpCallback: 'jsonp',
+		      dataType: 'jsonp'
+		    }).then(function (data) {
+		    	console.log(data)
+		      console.log(data.RelatedTopics);
+		    });
+	})
+</script>
+</body>
+</html>
