@@ -879,6 +879,28 @@ small, .t-s, .result__snippet, .result__extras, .nav-menu__item, .use-opts .opt-
 .result__url {
   color: #888;
 }
+.info--head {
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  font-size: 1em;
+  font-weight: 600;
+  padding: 0.3em 0 0.4em;
+}
+.one-line {
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+.tile--info .info--head {
+  border-top: none;
+  border-bottom: 1px solid #f2f2f2;
+  margin-bottom: -1px;
+}
 @media only screen and (min-width: 60em){
 	.result__a {
   white-space: nowrap;

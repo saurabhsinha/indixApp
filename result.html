@@ -15,7 +15,7 @@
 						class="header__logo">DuckDuckGo</span></a>
 					<div class="header__content  header__search">
 						<form class="search--adv  search--header  js-search-form has-text">
-							<input type="text" name="q" tabindex="1" autocomplete="off" id="search_form_input" class="search__input--adv  js-search-input" value="duckduckgo" autocapitalize="off" autocorrect="off">
+							<input type="text" name="q" tabindex="1" autocomplete="off" id="search_form_input" class="search__input--adv  js-search-input"  autocapitalize="off" autocorrect="off">
 							<input id="search_form_input_clear" class="search__clear  js-search-clear" type="button" tabindex="3" value="X">
 							<input id="search_button" class="search__button  js-search-button" type="submit" tabindex="2" value="S">
 						</form>
@@ -31,19 +31,15 @@
 							<a href="https://en.wikipedia.org/wiki/DuckDuckGo"
 								class="zci__img-wrap__in"><img
 								class="zci__img  js-sized-img"
-								src="https://duckduckgo.com/i/9129e7ed.png"
+								src=""
 								style="width: auto; height: auto;"></a>
 						</div>
 						<div class="zci__body  zci__body--info">
 							<h1 class="zci__header  ">
-								<a href="https://en.wikipedia.org/wiki/DuckDuckGo"
-									title="DuckDuckGo">DuckDuckGo</a>
+								<a class="headerLink" href="https://en.wikipedia.org/wiki/DuckDuckGo"
+									title="DuckDuckGo"></a>
 							</h1>
-							<div class="zci__content zci__content--info chomp js-ellipsis">DuckDuckGo
-								is a Internet search engine that emphasizes protecting
-								searchers' privacy and avoiding the filter bubble of
-								personalized search results. DuckDuckGo distinguishes itself
-								from other search engines 
+							<div class="zci__content zci__content--info chomp js-ellipsis">
 							</div>
 							<div class="zci__links  zci__links--info">
 								<a class="chomp--link  sep--after  js-chomp-link can-expand"><i
@@ -63,29 +59,18 @@
 				<div>
 					<div class="zci__aux">
 						<div class="tile  tile--info  js-infobox-tile">
-							<div class="info">
+						<h6 class="info  info--head">Related Topics</h6>
+							<!-- <div class="info">
 								<span class="info__label">Slogan</span><span class="info__value">The
 									search engine that doesn't track you.</span>
-							</div>
-							<div class="info">
-								<span class="info__label">Type of site</span><span
-									class="info__value">search engine</span>
-							</div>
-							<div class="info">
-								<span class="info__label">Owner</span><span class="info__value">DuckDuckGo,
-									Inc.</span>
-							</div>
-							<div class="info">
-								<span class="info__label">Created by</span><span
-									class="info__value">Gabriel Weinberg</span>
-							</div>
-							<div class="info">
-								<span class="info__label">Launched</span><span
-									class="info__value">September 25, 2008</span>
-							</div>
-							<div class="info">
-								<span class="info__label">Alexa rank</span><span
-									class="info__value">781 (March 1, 2015)</span>
+							</div> -->
+							<div class="info  one-line">
+								<a class="tile--info__link" href="/Discourse_topic">Discourse
+									topic - A discourse topic is the central participant or idea of
+									a stretch of connected discourse or dialogue. The topic is what
+									the discourse is about. The notion is often confused with the
+									related notion of sentence-level topic/theme, which is
+									frequently defined as "what the sentence is about."</a>
 							</div>
 							<div class="tile__expand  tile--info__expand   js-tile-expand"></div>
 						</div>
@@ -139,5 +124,35 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/result.js"></script>
+	<script>
+	 function formSubmit(query){
+	    	$.ajax({
+			      type: 'GET',
+			      url: 'https://api.duckduckgo.com/',
+			      data: { q: query, format: 'json', pretty: 1 },
+			      jsonpCallback: 'jsonp',
+			      dataType: 'jsonp'
+			    }).then(function (data) {
+			    	console.log(query)
+			    	$("#search_form_input").val(query);
+			    });
+	    }
+	    
+	window.onload = function () {
+	    var url = document.location.href,
+	        params = url.split('?')[1].split('&'),
+	        query = {}, tmp;
+	    for (var i = 0, l = params.length; i < l; i++) {
+	         tmp = params[i].split('=');
+	         query[tmp[0]] = tmp[1];
+	    }
+	    $("#search_form_input").val(query.query);
+	    var searchQuery = $("#search_form_input").val();
+	    result.returnForm(searchQuery)
+	   
+	}
+	</script>
 </body>
 </html>
