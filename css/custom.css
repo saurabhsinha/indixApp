@@ -435,6 +435,9 @@
   max-height: 4em;
   overflow: hidden;
 }
+.has-chomp-expanded .chomp, .chomp.is-expanded {
+  max-height: none !important;
+}
 small, .t-s, .result__snippet, .result__extras, .nav-menu__item, .use-opts .opt--t-s, .acp__snippet, .zci__body .chomp--link, .zci__more-at, .zci__more-at--info {
   font-size: 0.9167em;
 }
@@ -442,7 +445,9 @@ small, .t-s, .result__snippet, .result__extras, .nav-menu__item, .use-opts .opt-
   display: none;
   cursor: pointer;
 }
-
+.has-chomp-expanded .chomp--link .chomp--link__icn:after, .chomp--link.is-expanded .chomp--link__icn:after {
+  content: "\2d";
+}
 .zci__links, .zci__more-at-wrap {
   margin-top: 0.75em;
   display: block;
@@ -450,6 +455,32 @@ small, .t-s, .result__snippet, .result__extras, .nav-menu__item, .use-opts .opt-
 }
 .chomp--link.can-expand {
   display: inline-block;
+}
+.chomp--link__icn {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  font-family: 'ddg-serp-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  text-decoration: none !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #d3d3d3;
+  margin-right: 0.25em;
+  position: relative;
+  line-height: 18px;
+  width: 18px;
+  height: 18px;
+  top: -1px;
 }
 .zci__body .chomp--link, .zci__more-at, .zci__more-at--info, .zci__body .chomp--link:focus, .zci__more-at:focus, .zci__more-at--info:focus {
   color: #888;
