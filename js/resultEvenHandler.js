@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$(".chomp--link,.tile__expand ").click(function(){
+	$("body").on('click','.chomp--link,.tile__expand ',function(){
 		$content = $(".zci__content");
 		if($(".zci").hasClass("has-chomp-expanded")){
 			$(".zci").removeClass("has-chomp-expanded");
