@@ -27,12 +27,16 @@ var result = function(){
 			$(".zci__content ").text(abstractText);
 		}
 		var relatedTopics = data.RelatedTopics;
+		var expandLink = $("<div class='tile__expand  tile--info__expand   js-tile-expand'></div>");
+		
 		$.each(relatedTopics,function(i,d){
 			var divRowOne = $("<div class='info  one-line'>");
-			divRowOne.append(d.Result);
-			var expandLink = $("<div class='tile__expand  tile--info__expand   js-tile-expand'></div>")
-			$(".tile--info").append(divRowOne).append(expandLink);
+			var temp = $(d.Result);
+			divRowOne.append(d.Text);
+			divRowOne.attr("data-link",$(d.Result)[0].innerHTML);
+			$(".tile--info").append(divRowOne);
 		})
+		$(".tile--info").append(expandLink);
 		if(moreAtWebsite != ""){
 			var moreLink = $("<a href='"+moreAtWebsite+"' class='zci__more-at--info'><img width='16' height='16' class='zci__more-at__icon' src='images/wikipedia.png'>More at Wikipedia </a>");
 			$(".zci__links > a:nth-child(1)").after(moreLink);
@@ -91,7 +95,6 @@ var result = function(){
 	
 	return {
 		returnForm:function(query){
-			console.log(query)
 			formSubmit(query);
 		}
 	}

@@ -111,19 +111,7 @@
 	<script type="text/javascript" src="js/result.js"></script>
 	<script type="text/javascript" src="js/resultEvenHandler.js"></script>
 	<script>
-	 function formSubmit(query){
-	    	$.ajax({
-			      type: 'GET',
-			      url: 'https://api.duckduckgo.com/',
-			      data: { q: query, format: 'json', pretty: 1 },
-			      jsonpCallback: 'jsonp',
-			      dataType: 'jsonp'
-			    }).then(function (data) {
-			    	console.log(query)
-			    	$("#search_form_input").val(query);
-			    });
-	    }
-	    
+	 
 	window.onload = function () {
 	    var url = document.location.href,
 	        params = url.split('?')[1].split('&'),
@@ -132,7 +120,11 @@
 	         tmp = params[i].split('=');
 	         query[tmp[0]] = tmp[1];
 	    }
-	    $("#search_form_input").val(query.query);
+		console.log(query.query)
+		if(typeof query.query != 'undefined'){
+			console.log('hi')
+			$("#search_form_input").val(query.query.replace(/%20/g, " "));
+		}
 	    var searchQuery = $("#search_form_input").val();
 	    result.returnForm(searchQuery)
 	   
